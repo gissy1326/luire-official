@@ -39,6 +39,10 @@ async function getList(endpoint, orders) {
       items.push(...data.contents);
       if (items.length >= data.totalCount) break;
     }
+    if (!items.length) {
+      console.warn(`[microCMS] ${endpoint}: 0件 → content/${endpoint}.json を使用`);
+      return local(endpoint);
+    }
     return items;
   } catch (e) {
     console.warn(`[microCMS] ${e.message} → content/${endpoint}.json を使用`);
