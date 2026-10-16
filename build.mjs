@@ -264,7 +264,6 @@ ${watch ? `<a href="${esc(watch.youtubeUrl)}" class="btn" target="_blank" rel="n
 <div class="lines-r" aria-hidden="true">
 <div class="cl">Cover Girls<br>AILLYN &amp; MAI</div>
 <div class="cl">Executive Producer<br>DJ HASEBE</div>
-<div class="jp">ASH&amp;DIAMOND<br>iTunes R&amp;B/ソウル TOP10</div>
 </div>
 </div>
 </section>
