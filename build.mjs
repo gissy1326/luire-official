@@ -181,7 +181,11 @@ ${moreHref ? `<a href="${moreHref}" class="cl more">View All →</a>` : ''}
 function liveItem(l, past) {
   const ticket = l.ticketUrl && !past ? `<a href="${esc(l.ticketUrl)}" class="btn solid" target="_blank" rel="noopener">Ticket ↗</a>` : past ? '<span class="cl past-tag">Finished</span>' : '';
   const sub = [l.venue, l.time].filter(Boolean).map(esc).join('　');
-  return `<li class="live-item">
+  const flyer = l.flyer && l.flyer.url
+    ? `<a href="${esc(l.flyer.url)}" class="flyer" target="_blank" rel="noopener" aria-label="${esc(l.title)} フライヤーを拡大"><img src="${esc(img(l.flyer, 800))}" alt="${esc(l.title)} フライヤー" loading="lazy" width="${l.flyer.width || 800}" height="${l.flyer.height || 1000}"></a>`
+    : '';
+  return `<li class="live-item${flyer ? ' has-flyer' : ''}">
+${flyer}
 <div class="cl live-date">${ymd(l.date)}<small>${dow(l.date)}</small></div>
 <div><h3>${esc(l.title)}</h3>${sub ? `<p>${sub}</p>` : ''}${l.lineup ? `<p>${esc(l.lineup)}</p>` : ''}${l.note ? `<p>${nl2br(l.note)}</p>` : ''}</div>
 <div>${ticket}</div>
