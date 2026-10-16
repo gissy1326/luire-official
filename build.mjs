@@ -100,7 +100,7 @@ const NAV = [
   ['Live', '/live/'],
   ['News', '/news/'],
   ['Discography', '/discography/'],
-  ['Profile', '/#profile'],
+  ['Profile', '/profile/'],
   ['Movie', '/movie/'],
 ];
 const nav = (current) => NAV.map(([l, h]) => `<a href="${h}" class="cl"${current === h ? ' aria-current="page"' : ''}>${l}</a>`).join('\n');
@@ -269,37 +269,9 @@ ${watch ? `<a href="${esc(watch.youtubeUrl)}" class="btn" target="_blank" rel="n
 </div>
 </section>
 
-<section class="wrap sec" id="live" aria-labelledby="h-live">
-${secHead('h2', 'Live', 'Schedule', '/live/', 'h-live')}
-${upcoming.length ? `<ul class="live-list">${upcoming.slice(0, 3).map((l) => liveItem(l, false)).join('')}</ul>` : comingSoon()}
-</section>
-
 <section class="wrap sec" id="news" aria-labelledby="h-news">
 ${secHead('h2', 'News', 'LUIRE TIMES', '/news/', 'h-news')}
-<ul class="news-list">${news.slice(0, 5).map(newsItem).join('')}</ul>
-</section>
-
-<section class="wrap sec" id="discography" aria-labelledby="h-disco">
-${secHead('h2', 'Discography', 'Back Numbers', '/discography/', 'h-disco')}
-<div class="rel-grid" style="margin-top:36px">${releases.slice(0, 3).map(relCard).join('')}</div>
-</section>
-
-<section class="wrap sec" id="profile" aria-labelledby="h-profile">
-${secHead('h2', 'Profile', 'Cover Girls', '', 'h-profile')}
-<p class="intro">${nl2br(profile.intro || '')}</p>
-<div class="members">
-${[['AILLYN', 'アイリン', profile.aillynPhoto, profile.aillynText, MEMBERS_IG.aillyn], ['MAI', 'マイ', profile.maiPhoto, profile.maiText, MEMBERS_IG.mai]]
-  .map(([n, k, p, t, ig]) => `<div class="member">
-<img src="${esc(img(p, 1000))}" alt="${n}" loading="lazy" width="934" height="1168">
-<div class="member-head"><div class="n"><h3 class="bd">${n}</h3><span class="cl kana">${k}</span></div><a href="${ig}" class="cl more" target="_blank" rel="noopener">Instagram ↗</a></div>
-${t ? `<p>${nl2br(t)}</p>` : ''}
-</div>`).join('')}
-</div>
-</section>
-
-<section class="wrap sec" id="movie" aria-labelledby="h-movie">
-${secHead('h2', 'Movie', 'On Screen', '/movie/', 'h-movie')}
-<div class="mv-grid" style="margin-top:36px">${movies.slice(0, 2).map(mvCard).join('')}</div>
+<ul class="news-list">${news.slice(0, 3).map(newsItem).join('')}</ul>
 </section>`;
 
   const groupLd = {
@@ -317,6 +289,25 @@ ${secHead('h2', 'Movie', 'On Screen', '/movie/', 'h-movie')}
   };
   await write('/', layout({ pathname: '/', body: top, accent, current: '/', jsonld: groupLd }));
   urls.push('/');
+
+  /* PROFILE */
+  await write('/profile/', layout({
+    title: 'Profile', pathname: '/profile/', accent, current: '/profile/',
+    description: 'AILLYN & MAIによるR&Bユニット・LUIRE（ルイール）のプロフィール。',
+    body: `<section class="wrap page-top">
+${secHead('h1', 'Profile', 'Cover Girls', '')}
+<p class="intro">${nl2br(profile.intro || '')}</p>
+<div class="members">
+${[['AILLYN', 'アイリン', profile.aillynPhoto, profile.aillynText, MEMBERS_IG.aillyn], ['MAI', 'マイ', profile.maiPhoto, profile.maiText, MEMBERS_IG.mai]]
+  .map(([n, k, p, t, ig]) => `<div class="member">
+<img src="${esc(img(p, 1000))}" alt="${n}" width="934" height="1168">
+<div class="member-head"><div class="n"><h3 class="bd">${n}</h3><span class="cl kana">${k}</span></div><a href="${ig}" class="cl more" target="_blank" rel="noopener">Instagram ↗</a></div>
+${t ? `<p>${nl2br(t)}</p>` : ''}
+</div>`).join('')}
+</div>
+</section>`,
+  }));
+  urls.push('/profile/');
 
   /* LIVE */
   await write('/live/', layout({
