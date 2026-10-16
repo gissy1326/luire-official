@@ -1,0 +1,45 @@
+{
+  "apiFields": [
+    {
+      "idValue": "174a384a83",
+      "fieldId": "intro",
+      "name": "グループ紹介文",
+      "kind": "textArea",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "65127e64e0",
+      "fieldId": "aillynText",
+      "name": "AILLYN 紹介文",
+      "kind": "textArea",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "b11d68a877",
+      "fieldId": "aillynPhoto",
+      "name": "AILLYN 写真",
+      "kind": "media",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "e5261ff717",
+      "fieldId": "maiText",
+      "name": "MAI 紹介文",
+      "kind": "textArea",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "d372224b01",
+      "fieldId": "maiPhoto",
+      "name": "MAI 写真",
+      "kind": "media",
+      "required": false,
+      "isUnique": false
+    }
+  ],
+  "customFields": []
+}

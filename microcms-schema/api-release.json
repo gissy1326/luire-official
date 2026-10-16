@@ -1,0 +1,114 @@
+{
+  "apiFields": [
+    {
+      "idValue": "fb197dc8e7",
+      "fieldId": "title",
+      "name": "タイトル",
+      "kind": "text",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "ef4f0e17f8",
+      "fieldId": "number",
+      "name": "号数（No.）",
+      "kind": "number",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "9d7661d59a",
+      "fieldId": "type",
+      "name": "種類",
+      "kind": "select",
+      "required": true,
+      "isUnique": false,
+      "selectItems": [
+        {
+          "id": "9bcd1bcbf3",
+          "value": "Digital Single"
+        },
+        {
+          "id": "e92ada5233",
+          "value": "Debut Single"
+        },
+        {
+          "id": "36451ff057",
+          "value": "EP"
+        },
+        {
+          "id": "7c97df89b3",
+          "value": "Album"
+        }
+      ],
+      "selectInitialValue": [],
+      "multipleSelect": false
+    },
+    {
+      "idValue": "a01bdaca4d",
+      "fieldId": "releaseDate",
+      "name": "リリース日",
+      "kind": "date",
+      "required": true,
+      "isUnique": false,
+      "dateFormat": true
+    },
+    {
+      "idValue": "121ed2c7c6",
+      "fieldId": "jacket",
+      "name": "ジャケット画像",
+      "kind": "media",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "87aa9d776a",
+      "fieldId": "cover",
+      "name": "表紙写真（トップに大きく出る写真）",
+      "kind": "media",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "fc2986e3be",
+      "fieldId": "color",
+      "name": "テーマカラー（例 #E0218A）",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "6ec30a8abf",
+      "fieldId": "catch",
+      "name": "キャッチコピー",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "36228c8441",
+      "fieldId": "streamingUrl",
+      "name": "配信リンク（linkco.re）",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "133596f21f",
+      "fieldId": "description",
+      "name": "作品紹介",
+      "kind": "richEditorV2",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "7f7d7e6905",
+      "fieldId": "credit",
+      "name": "クレジット",
+      "kind": "textArea",
+      "required": false,
+      "isUnique": false
+    }
+  ],
+  "customFields": []
+}

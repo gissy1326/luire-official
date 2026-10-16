@@ -1,0 +1,64 @@
+[
+  {
+    "id": "shine-on-you",
+    "number": 3,
+    "title": "Shine on you",
+    "type": [
+      "Digital Single"
+    ],
+    "releaseDate": "2026-09-04T00:00:00.000Z",
+    "jacket": {
+      "url": "/images/jk_shine.jpg",
+      "width": 1254,
+      "height": 1254
+    },
+    "cover": {
+      "url": "/images/group.jpg",
+      "width": 1400,
+      "height": 934
+    },
+    "color": "#E0218A",
+    "catch": "傷ついた朝から、もう一度輝くまで。",
+    "streamingUrl": "https://linkco.re/FUfst8x8",
+    "description": "<p>失恋から立ち直り、自分らしさと自信を取り戻していく女性を描いた3rd Single。傷ついたまま迎えた朝から、ドレスアップして街へ出て、元恋人にも笑顔で向き合えるまで──痛みを強さに変えて前へ進む姿を歌う。“自分の光で、もう一度輝けばいい”という、自由と自己愛を讃えるエンパワーメント・ソング。</p>",
+    "credit": "Lyrics: Milligram\nMusic: RYUJA\nProduced by DJ HASEBE, RYUJA\nVocals: LUIRE"
+  },
+  {
+    "id": "shut-down",
+    "number": 2,
+    "title": "shut down",
+    "type": [
+      "Digital Single"
+    ],
+    "releaseDate": "2026-04-29T00:00:00.000Z",
+    "jacket": {
+      "url": "/images/jk_shut.jpg",
+      "width": 1024,
+      "height": 1024
+    },
+    "color": "#C8102E",
+    "catch": "石ころみたいな男なんて、もういらない。",
+    "streamingUrl": "https://linkco.re/u2pzyvMg",
+    "description": "<p>DJ HASEBEをExecutive Producerに迎えた2nd Single。2000年代の熱を帯びたタフなR&amp;Bサウンドに乗せて、二人の交錯するボーカルが痛快で鋭いメッセージを放つ。曖昧な関係に自ら終止符を打ち、すべてをshut downすることで見えてくる“本当の自分”。赤いハイヒールが石を踏み砕くビジュアルは、タフに自立して進む女性像を映し出す。</p><p>iTunes Store R&amp;B/ソウル トップソングにランクイン。</p>",
+    "credit": "Lyrics & Music: Milligram, RYUJA\nProduced by DJ HASEBE, RYUJA\nVocals: LUIRE"
+  },
+  {
+    "id": "ash-and-diamond",
+    "number": 1,
+    "title": "ASH&DIAMOND",
+    "type": [
+      "Debut Single"
+    ],
+    "releaseDate": "2026-02-06T00:00:00.000Z",
+    "jacket": {
+      "url": "/images/jk_ash.jpg",
+      "width": 1400,
+      "height": 1352
+    },
+    "color": "#141210",
+    "catch": "LUIRE、ここから。",
+    "streamingUrl": "https://linkco.re/tNFRct16",
+    "description": "<p>AILLYN &amp; MAIによるユニット・LUIREのデビューシングル。リリース直後にiTunes Store（日本）R&amp;B/ソウル トップソングでTOP10入りを果たした。</p>",
+    "credit": "Lyrics: Milligram\nMusic: RYUJA\nProduced by RYUJA, DJ HASEBE\nVocals: LUIRE"
+  }
+]

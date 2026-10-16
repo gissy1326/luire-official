@@ -1,0 +1,66 @@
+{
+  "apiFields": [
+    {
+      "idValue": "405721aaf1",
+      "fieldId": "title",
+      "name": "タイトル",
+      "kind": "text",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "e453cc5920",
+      "fieldId": "category",
+      "name": "カテゴリ",
+      "kind": "select",
+      "required": true,
+      "isUnique": false,
+      "selectItems": [
+        {
+          "id": "60966267e6",
+          "value": "LIVE"
+        },
+        {
+          "id": "79810b80c5",
+          "value": "MUSIC"
+        },
+        {
+          "id": "b17b7bfe43",
+          "value": "MEDIA"
+        },
+        {
+          "id": "801b5c7f7c",
+          "value": "INFO"
+        }
+      ],
+      "selectInitialValue": [],
+      "multipleSelect": false
+    },
+    {
+      "idValue": "677c9ed488",
+      "fieldId": "date",
+      "name": "日付",
+      "kind": "date",
+      "required": true,
+      "isUnique": false,
+      "dateFormat": true
+    },
+    {
+      "idValue": "74983f3ee5",
+      "fieldId": "thumbnail",
+      "name": "サムネイル画像",
+      "kind": "media",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "3979f2e841",
+      "fieldId": "body",
+      "name": "本文",
+      "kind": "richEditorV2",
+      "required": false,
+      "isUnique": false
+    }
+  ],
+  "customFields": []
+}

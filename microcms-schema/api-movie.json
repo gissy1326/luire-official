@@ -1,0 +1,30 @@
+{
+  "apiFields": [
+    {
+      "idValue": "5426150b88",
+      "fieldId": "title",
+      "name": "タイトル",
+      "kind": "text",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "e9e5e9817c",
+      "fieldId": "youtubeUrl",
+      "name": "YouTube URL",
+      "kind": "text",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "5b13cbabac",
+      "fieldId": "date",
+      "name": "公開日",
+      "kind": "date",
+      "required": true,
+      "isUnique": false,
+      "dateFormat": true
+    }
+  ],
+  "customFields": []
+}

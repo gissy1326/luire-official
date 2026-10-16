@@ -1,0 +1,62 @@
+{
+  "apiFields": [
+    {
+      "idValue": "1be63e8b6f",
+      "fieldId": "title",
+      "name": "公演名",
+      "kind": "text",
+      "required": true,
+      "isUnique": false
+    },
+    {
+      "idValue": "8c9eb4885e",
+      "fieldId": "date",
+      "name": "日付",
+      "kind": "date",
+      "required": true,
+      "isUnique": false,
+      "dateFormat": true
+    },
+    {
+      "idValue": "9d1ff4e477",
+      "fieldId": "venue",
+      "name": "会場",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "81c23a4d05",
+      "fieldId": "time",
+      "name": "時間（例 OPEN 18:00 / START 19:00）",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "a07a1fb22c",
+      "fieldId": "lineup",
+      "name": "出演",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "43ef00ece5",
+      "fieldId": "ticketUrl",
+      "name": "チケットURL",
+      "kind": "text",
+      "required": false,
+      "isUnique": false
+    },
+    {
+      "idValue": "f6b013369b",
+      "fieldId": "note",
+      "name": "備考",
+      "kind": "textArea",
+      "required": false,
+      "isUnique": false
+    }
+  ],
+  "customFields": []
+}
