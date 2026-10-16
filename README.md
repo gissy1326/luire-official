@@ -31,3 +31,4 @@ AILLYN & MAI による R&B ユニット・LUIRE のオフィシャルサイト�
 
 ## 問い合わせ先
 フッターに STANFORD Inc.（info@stanford-group.com）を表示。変更は `build.mjs` の `CONTACT_EMAIL`。
+
