@@ -155,3 +155,13 @@ a:hover{color:var(--accent)}
 @media (min-width:761px){
   .site-header .in{height:68px;flex-wrap:nowrap;padding-top:0;padding-bottom:0}
 }
+
+/* live: フライヤー */
+.live-item.has-flyer{grid-template-columns:200px 160px 1fr auto;align-items:start}
+.flyer{display:block}
+.flyer img{width:100%;height:auto;box-shadow:6px 6px 0 var(--ink)}
+.flyer:hover img{box-shadow:6px 6px 0 var(--accent)}
+@media (max-width:760px){
+  .live-item.has-flyer{grid-template-columns:1fr}
+  .flyer{max-width:320px}
+}
