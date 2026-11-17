@@ -20,7 +20,7 @@ const MEMBERS_IG = { aillyn: 'https://www.instagram.com/7aillyn/', mai: 'https:/
 const CONTACT_EMAIL = 'info@stanford-group.com';
 const DEFAULT_ACCENT = '#E0218A';
 
-// トップの「特別付録CD」(試聴プレーヤー)。null にすると表示されない。
+// トップの「今号の1曲」(CD風の試聴プレーヤー)。null にすると表示されない。
 // 音源は public/audio/ に置く(30〜40秒程度のmp3)。
 const FUROKU = {
   title: 'Shine On You',
@@ -230,22 +230,22 @@ function mvCard(m) {
 }
 
 
-/* 特別付録CD(雑誌の付録CD風プレーヤー) */
+/* 今号の1曲(CD風の試聴プレーヤー) */
 function furoku() {
   const f = FUROKU;
   if (!f) return '';
   const total = `${Math.floor(f.duration / 60)}:${pad2(Math.round(f.duration % 60))}`;
   return `
-<section class="wrap furoku" id="furoku" aria-label="特別付録CD">
+<section class="wrap furoku" id="furoku" aria-label="今号の1曲(試聴)">
 <div class="fk">
 <div class="fk-media">
 <div class="fk-disc" aria-hidden="true"><b><img src="${esc(f.jacket)}" alt="" width="600" height="600" loading="lazy"><i></i></b></div>
-<div class="fk-sleeve" aria-hidden="true"><span class="cl">LUIRE Special CD — Not For Sale</span></div>
-<div class="fk-stamp" aria-hidden="true"><span>特別</span><span>付録</span></div>
+<div class="fk-sleeve" aria-hidden="true"><span class="cl">LUIRE — Listening Sample</span></div>
+<div class="fk-stamp" aria-hidden="true"><span>試聴</span><span class="cl">Listen</span></div>
 </div>
 <div class="fk-body">
-<div class="cl fk-kicker">Special Furoku CD</div>
-<h2 class="fk-h">特別付録 CD</h2>
+<div class="cl fk-kicker">Track of the Issue</div>
+<h2 class="fk-h">今号の1曲</h2>
 <div class="fk-track"><span class="cl">Track 01</span><b class="cl">${esc(f.title)}</b><span class="cl">LUIRE</span></div>
 <div class="fk-ctrl">
 <button type="button" class="btn solid fk-play" aria-label="${esc(f.title)}を再生"><span class="fk-ic" aria-hidden="true"></span><span class="fk-pl">Play</span></button>

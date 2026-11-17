@@ -166,10 +166,10 @@ a:hover{color:var(--accent)}
   .flyer{max-width:320px}
 }
 
-/* ===== 特別付録CD(トップ) ===== */
+/* ===== 今号の1曲(CD風の試聴プレーヤー・トップ) ===== */
 .furoku{padding-top:72px}
 .fk{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;border:2px dashed var(--ink);padding:clamp(24px,4vw,56px)}
-.fk::before{content:"✂ キリトリ";position:absolute;top:-11px;left:24px;background:var(--paper);padding:0 8px;font-size:12px;letter-spacing:.2em;color:var(--sub)}
+.fk::before{content:"♪ LISTENING";position:absolute;top:-11px;left:24px;background:var(--paper);padding:0 8px;font-size:12px;letter-spacing:.2em;color:var(--sub)}
 .fk-media{position:relative;width:min(100%,380px);aspect-ratio:1;margin-right:38%;justify-self:start}
 /* CD本体(.fk-disc=出し入れ、b=回転) */
 .fk-disc{position:absolute;inset:3%;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
@@ -179,7 +179,8 @@ a:hover{color:var(--accent)}
 /* 透明のビニールケース */
 .fk-sleeve{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 38%,rgba(255,255,255,0) 45%,rgba(255,255,255,.18) 62%,rgba(255,255,255,.4) 100%);border:1px solid rgba(20,18,16,.18);box-shadow:inset 0 0 0 6px rgba(255,255,255,.25);pointer-events:none}
 .fk-sleeve span{position:absolute;left:10px;bottom:8px;white-space:nowrap;font-size:10px;letter-spacing:.14em;color:rgba(20,18,16,.55)}
-.fk-stamp{position:absolute;left:-14px;top:-16px;width:74px;height:74px;border-radius:50%;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:15px;line-height:1.15;transform:rotate(-12deg);box-shadow:2px 3px 0 var(--ink);z-index:2}
+.fk-stamp .cl{font-size:10px;letter-spacing:.12em;font-weight:500}
+.fk-stamp{position:absolute;left:-14px;top:-16px;width:74px;height:74px;border-radius:50%;background:var(--accent);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:16px;line-height:1.15;transform:rotate(-12deg);box-shadow:2px 3px 0 var(--ink);z-index:2}
 /* 再生中:ケースから出てきて回る */
 .furoku.is-playing .fk-disc{transform:translateX(52%)}
 .furoku.is-playing .fk-disc b{animation-play-state:running}
