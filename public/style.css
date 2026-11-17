@@ -208,3 +208,43 @@ a:hover{color:var(--accent)}
   .furoku.is-playing .fk-disc{transform:translateX(46%)}
 }
 @media (prefers-reduced-motion:reduce){.fk-disc b{animation:none!important}.fk-disc{transition:none}}
+
+/* ===== オープニング:雑誌をめくると表紙(トップ)が出てくる ===== */
+.mz{display:none}
+html[data-intro="play"] .mz{display:block;position:fixed;inset:0;z-index:1000;perspective:2200px;cursor:pointer;animation:mz-hide 0s 2.75s forwards}
+html[data-intro="play"] body{overflow:hidden}
+.mz-page{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;animation:mz-flip .8s cubic-bezier(.55,.05,.35,1) forwards}
+.mz-1{animation-delay:.75s}
+.mz-2{animation-delay:1.3s}
+.mz-3{animation-delay:1.85s}
+.mz-page .f,.mz-page .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);overflow:hidden}
+.mz-page .b{transform:rotateY(180deg);background:linear-gradient(90deg,#e6dfd3,#f3eee5 30%)}
+/* めくるときの影 */
+.mz-page .f::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.35),rgba(20,18,16,0) 60%);opacity:0;animation:mz-shade .8s cubic-bezier(.55,.05,.35,1) forwards;animation-delay:inherit;pointer-events:none}
+.mz-1 .f::after{animation-delay:.75s}.mz-2 .f::after{animation-delay:1.3s}.mz-3 .f::after{animation-delay:1.85s}
+/* 綴じ目(左端)の影 */
+.mz-page .f::before{content:"";position:absolute;left:0;top:0;bottom:0;width:28px;background:linear-gradient(90deg,rgba(20,18,16,.18),rgba(20,18,16,0));z-index:2}
+@keyframes mz-flip{to{transform:rotateY(-180deg)}}
+@keyframes mz-shade{0%{opacity:0}50%{opacity:1}100%{opacity:1}}
+@keyframes mz-hide{to{visibility:hidden}}
+.mz-pn{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;color:var(--sub);z-index:3}
+/* 1ページ目:タイトル */
+.mz-1 .f{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.4vh,28px);padding:0 var(--gutter)}
+.mz-top{position:absolute;left:var(--gutter);right:var(--gutter);top:22px;display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.16em;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.mz-logo{width:min(78%,820px);height:auto}
+.mz-vol{margin:0;font-style:italic;font-size:clamp(20px,2.6vw,34px)}
+.mz-who{margin:0;font-size:clamp(14px,1.4vw,18px);letter-spacing:.3em;color:var(--accent)}
+/* 2ページ目:ふたりの写真 */
+.mz-2 .f{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.2vw,16px);padding:clamp(16px,3vw,40px) clamp(16px,3vw,40px) 52px}
+.mz-2 figure{position:relative;margin:0;overflow:hidden}
+.mz-2 figure img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.mz-2 figcaption{position:absolute;left:14px;bottom:10px;color:#fff;font-style:italic;font-size:clamp(30px,5vw,72px);line-height:1;text-shadow:0 2px 16px rgba(0,0,0,.35)}
+.mz-tag{position:absolute;right:clamp(24px,4vw,56px);top:clamp(24px,4vw,56px);background:var(--accent);color:#fff;padding:8px 12px;font-size:13px;letter-spacing:.18em;transform:rotate(4deg);z-index:2}
+/* 3ページ目:最新作 */
+.mz-3 .f{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:0 var(--gutter)}
+.mz-jk{width:min(56vh,62vw,520px);aspect-ratio:1}
+.mz-jk img{width:100%;height:100%;object-fit:cover;box-shadow:12px 12px 0 var(--ink)}
+.mz-cap{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.mz-cap span{font-size:13px;letter-spacing:.2em;color:var(--sub)}
+.mz-cap b{font-size:clamp(28px,3.4vw,48px);color:var(--accent)}
+@media (max-width:760px){.mz-top span:last-child{display:none}}

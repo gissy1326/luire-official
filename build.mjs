@@ -120,7 +120,7 @@ const NAV = [
 const nav = (current) => NAV.map(([l, h]) => `<a href="${h}" class="cl"${current === h ? ' aria-current="page"' : ''}>${l}</a>`).join('\n');
 
 /* ---------------- layout ---------------- */
-function layout({ title, description, pathname, body, accent, current, jsonld, ogImage }) {
+function layout({ title, description, pathname, body, accent, current, jsonld, ogImage, intro = '' }) {
   const fullTitle = title ? `${title} | LUIRE Official Site` : 'LUIRE Official Site | ルイール オフィシャルサイト';
   const desc = description || 'AILLYN & MAIによるR&Bユニット・LUIRE（ルイール）のオフィシャルサイト。最新リリース、ライブ、ニュース、プロフィール、MVを掲載。';
   const url = SITE_URL + pathname;
@@ -149,10 +149,12 @@ function layout({ title, description, pathname, body, accent, current, jsonld, o
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+${intro ? INTRO_EARLY : ''}
 <style>:root{--accent:${accent}}</style>
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>` : ''}
 </head>
 <body>
+${intro}
 <a href="#main" class="sr">本文へスキップ</a>
 <header class="site-header">
 <div class="in">
@@ -229,6 +231,41 @@ function mvCard(m) {
 </div>`;
 }
 
+
+
+/* オープニング:雑誌のページをめくると、表紙(トップ)が出てくる */
+const INTRO_KEY = 'luire-intro';
+const INTRO_EARLY = `<script>try{if(!sessionStorage.getItem('${INTRO_KEY}')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.intro='play'}catch(e){}</script>`;
+function magazineIntro(latest, total) {
+  const no = pad2((latest && latest.number) || total || 1);
+  const vol = latest ? `Vol.${no} — ${season(latest.releaseDate)} ${jst(latest.releaseDate).getUTCFullYear()}` : '';
+  const jk = latest ? img(latest.jacket, 1000) : '';
+  return `<div class="mz" aria-hidden="true">
+<div class="mz-page mz-3"><div class="f">
+<div class="mz-jk">${jk ? `<img src="${esc(jk)}" alt="" width="800" height="800">` : ''}</div>
+<div class="mz-cap"><span class="cl">New Issue No.${no}</span><b class="cl">${esc(latest ? latest.title : '')}</b><span class="cl">Out Now</span></div>
+<span class="cl mz-pn">— 03 —</span>
+</div><div class="b"></div></div>
+<div class="mz-page mz-2"><div class="f">
+<figure><img src="/images/aillyn2.jpg" alt="" width="934" height="1400"><figcaption class="bd">Aillyn</figcaption></figure>
+<figure><img src="/images/mai2.jpg" alt="" width="934" height="1400"><figcaption class="bd">Mai</figcaption></figure>
+<span class="cl mz-tag">Cover Girls</span>
+<span class="cl mz-pn">— 02 —</span>
+</div><div class="b"></div></div>
+<div class="mz-page mz-1"><div class="f">
+<div class="cl mz-top"><span>[ルイール] Black Music &amp; Fashion</span><span>${esc(vol)}</span></div>
+<img class="mz-logo" src="/images/logo_black.png" alt="" width="1400" height="262">
+<p class="bd mz-vol">${esc(vol)}</p>
+<p class="cl mz-who">AILLYN &amp; MAI</p>
+<span class="cl mz-pn">— 01 —</span>
+</div><div class="b"></div></div>
+</div>
+<script>
+(()=>{const h=document.documentElement;if(h.dataset.intro!=='play')return;try{sessionStorage.setItem('${INTRO_KEY}','1')}catch(e){}
+const done=()=>{h.dataset.intro='done'};const t=setTimeout(done,2900);
+document.querySelector('.mz').addEventListener('click',()=>{clearTimeout(t);done()});})();
+</script>`;
+}
 
 /* 今号の1曲(CD風の試聴プレーヤー) */
 function furoku() {
@@ -345,7 +382,7 @@ ${secHead('h2', 'News', 'LUIRE TIMES', '/news/', 'h-news')}
     sameAs: Object.values(SOCIAL),
     album: releases.map((r) => ({ '@type': 'MusicAlbum', name: r.title, datePublished: ymd(r.releaseDate).replace(/\./g, '-'), url: `${SITE_URL}/discography/${r.id}/` })),
   };
-  await write('/', layout({ pathname: '/', body: top, accent, current: '/', jsonld: groupLd }));
+  await write('/', layout({ pathname: '/', body: top, accent, current: '/', jsonld: groupLd, intro: magazineIntro(latest, releases.length) }));
   urls.push('/');
 
   /* PROFILE */
