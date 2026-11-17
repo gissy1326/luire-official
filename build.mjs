@@ -20,6 +20,16 @@ const MEMBERS_IG = { aillyn: 'https://www.instagram.com/7aillyn/', mai: 'https:/
 const CONTACT_EMAIL = 'info@stanford-group.com';
 const DEFAULT_ACCENT = '#E0218A';
 
+// トップの「特別付録CD」(試聴プレーヤー)。null にすると表示されない。
+// 音源は public/audio/ に置く(30〜40秒程度のmp3)。
+const FUROKU = {
+  title: 'Shine On You',
+  src: '/audio/shine-on-you.mp3',
+  jacket: '/images/jk_shine.jpg',
+  streamingUrl: 'https://linkco.re/FUfst8x8',
+  duration: 40,
+};
+
 /* ---------------- data ---------------- */
 async function local(name) {
   return JSON.parse(await readFile(path.join(ROOT, 'content', `${name}.json`), 'utf8'));
@@ -219,6 +229,47 @@ function mvCard(m) {
 </div>`;
 }
 
+
+/* 特別付録CD(雑誌の付録CD風プレーヤー) */
+function furoku() {
+  const f = FUROKU;
+  if (!f) return '';
+  const total = `${Math.floor(f.duration / 60)}:${pad2(Math.round(f.duration % 60))}`;
+  return `
+<section class="wrap furoku" id="furoku" aria-label="特別付録CD">
+<div class="fk">
+<div class="fk-media">
+<div class="fk-disc" aria-hidden="true"><b><img src="${esc(f.jacket)}" alt="" width="600" height="600" loading="lazy"><i></i></b></div>
+<div class="fk-sleeve" aria-hidden="true"><span class="cl">LUIRE Special CD — Not For Sale</span></div>
+<div class="fk-stamp" aria-hidden="true"><span>特別</span><span>付録</span></div>
+</div>
+<div class="fk-body">
+<div class="cl fk-kicker">Special Furoku CD</div>
+<h2 class="fk-h">特別付録 CD</h2>
+<div class="fk-track"><span class="cl">Track 01</span><b class="cl">${esc(f.title)}</b><span class="cl">LUIRE</span></div>
+<div class="fk-ctrl">
+<button type="button" class="btn solid fk-play" aria-label="${esc(f.title)}を再生"><span class="fk-ic" aria-hidden="true"></span><span class="fk-pl">Play</span></button>
+<span class="cl fk-time"><span class="fk-cur">0:00</span> / ${total}</span>
+</div>
+<div class="fk-bar" role="presentation"><span class="fk-fill"></span></div>
+${f.streamingUrl ? `<a href="${esc(f.streamingUrl)}" class="btn fk-full" target="_blank" rel="noopener">フルで聴く — Buy / Streaming ↗</a>` : ''}
+</div>
+</div>
+<audio class="fk-audio" src="${esc(f.src)}" preload="metadata"></audio>
+<script>
+(()=>{const r=document.getElementById('furoku');if(!r)return;const a=r.querySelector('.fk-audio'),b=r.querySelector('.fk-play'),l=r.querySelector('.fk-pl'),c=r.querySelector('.fk-cur'),fl=r.querySelector('.fk-fill'),bar=r.querySelector('.fk-bar');let raf=0;
+const fmt=t=>{t=Math.max(0,Math.floor(t));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')};
+const draw=()=>{const d=a.duration||${f.duration};c.textContent=fmt(a.currentTime);fl.style.width=(a.currentTime/d*100)+'%';if(!a.paused)raf=requestAnimationFrame(draw)};
+const set=p=>{r.classList.toggle('is-playing',p);l.textContent=p?'Pause':'Play';b.setAttribute('aria-label',p?'一時停止':'${esc(f.title)}を再生');cancelAnimationFrame(raf);if(p)raf=requestAnimationFrame(draw);else draw()};
+b.addEventListener('click',()=>{if(a.paused)a.play().catch(()=>set(false));else a.pause()});
+a.addEventListener('play',()=>set(true));a.addEventListener('pause',()=>set(false));
+a.addEventListener('ended',()=>{a.currentTime=0;set(false)});
+bar.addEventListener('click',e=>{const d=a.duration||${f.duration},q=bar.getBoundingClientRect();a.currentTime=Math.min(1,Math.max(0,(e.clientX-q.left)/q.width))*d;draw();if(a.paused)a.play().catch(()=>{})});
+})();
+</script>
+</section>`;
+}
+
 /* ---------------- pages ---------------- */
 async function main() {
   const [releases, news, lives, movies, profile] = await Promise.all([
@@ -275,7 +326,7 @@ ${watch ? `<a href="${esc(watch.youtubeUrl)}" class="btn" target="_blank" rel="n
 </div>
 </div>
 </section>
-
+${furoku()}
 <section class="wrap sec" id="news" aria-labelledby="h-news">
 ${secHead('h2', 'News', 'LUIRE TIMES', '/news/', 'h-news')}
 <ul class="news-list">${news.slice(0, 3).map(newsItem).join('')}</ul>
